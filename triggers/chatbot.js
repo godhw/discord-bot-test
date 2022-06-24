@@ -6,7 +6,7 @@ const { api_endpoint } = process.env;
 module.exports = {
 	keywords: ["everytime"],
 	prefixes: ["에타"],
-	suffixes: ["?"],
+	suffixes: ["//"],
 
 	/**
 	 * @description Executes when it is triggered by trigger handler.
@@ -17,14 +17,15 @@ module.exports = {
 	async execute(message, args) {
 		console.log('Request: ', message.toString());
     const formData = new FormData();
-    formData.append('text', encodeURIComponent(message.toString()));
+    const requestMsg = message.toString().replace("//",'').replace("에타",'');
+
+    formData.append('text', decodeURIComponent(requestMsg));
     formData.append('category', "대학생 잡담방");
     formData.append('length', "200");
 
 		const responseBody = await fetch(api_endpoint, {method : 'POST', body: formData, });
 		const responseJson = await responseBody.json();
-    const responseP = await responseJson[0];
-    const responseText = await encodeURIComponent(responseP);
+    const responseText = responseJson[0];
 
 		console.log('Response: ', responseText);
 		message.reply({
