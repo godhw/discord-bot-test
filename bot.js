@@ -73,11 +73,11 @@ const commandJsonData = [...Array.from(client.slashCommands.values()).map((c) =>
 				Routes.applicationCommands(client_id)
 			 */
 
-			Routes.applicationCommands(client_id),
-			{ body: commandJsonData }
-
-			//Routes.applicationGuildCommands(client_id, test_guild_id),
+			//Routes.applicationCommands(client_id),
 			//{ body: commandJsonData }
+
+			Routes.applicationGuildCommands(client_id, test_guild_id),
+			{ body: commandJsonData }
 		);
 
 		console.log("Successfully reloaded application (/) commands.");
