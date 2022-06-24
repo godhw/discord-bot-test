@@ -1,6 +1,7 @@
 # Custom
 /config.json
 .vscode/
+*.DS_Store
 
 # Logs
 logs
