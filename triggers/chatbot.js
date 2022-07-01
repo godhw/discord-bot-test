@@ -19,7 +19,7 @@ module.exports = {
     const formData = new FormData();
     const requestMsg = message.toString().replace("//",'').replace("에타",'');
 
-    formData.append('text', decodeURIComponent(requestMsg));
+    formData.append('text', requestMsg);
     formData.append('category', "대학생 잡담방");
     formData.append('length', "200");
 
